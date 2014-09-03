@@ -4,36 +4,36 @@ var colors = util.inspect.colors;
 var colo = {};
 
 var deco = function(_styles) {
-	var decorator = function() {
-		return decorate.apply(decorator, arguments);
-	};
-	decorator._styles = _styles;
-	decorator.__proto__ = Object.defineProperties(function(){}, styles);
-	return decorator;
+  var decorator = function() {
+    return decorate.apply(decorator, arguments);
+  };
+  decorator._styles = _styles;
+  decorator.__proto__ = Object.defineProperties(function(){}, styles);
+  return decorator;
 }
 
 var decorate = function() {
   var result = arguments[0];
   this._styles.forEach(function(style) {
-     var color = colors[style];
-     if (color) {
-       result = '\u001b[' + color[0] + 'm' + result + '\u001b[' + color[1] + 'm';
-     }
+    var color = colors[style];
+    if (color) {
+      result = '\u001b[' + color[0] + 'm' + result + '\u001b[' + color[1] + 'm';
+    }
   });
-	return result;
+  return result;
 }
 
 var styles = (function () {
-	var result = {};
-	Object.keys(colors).forEach(function (color) {
-		result[color] = {
-			get: function () {
-        if (!this._styles) this._styles = [];
-				return deco(this._styles.concat(color));
-			}
-		};
-	});
-	return result;
+  var result = {};
+  Object.keys(colors).forEach(function (color) {
+  result[color] = {
+    get: function () {
+      if (!this._styles) this._styles = [];
+      return deco(this._styles.concat(color));
+    }
+  };
+  });
+  return result;
 })();
 
 Object.defineProperties(colo, styles);
