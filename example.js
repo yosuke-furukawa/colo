@@ -1,8 +1,8 @@
-var colo = require("./index");
+var colo = require("./colo");
+var colog = colo.colog;
 
-
-console.log(colo.red("colo colo"));
-console.log(colo.cyan.bold("colo colo"));
-console.log(colo.green.underline("colo colo"));
-console.log(colo.magenta.italic("colo colo"));
-console.log(colo.grey.inverse("colo colo"));
+colog(colo.red("colo colo"));
+colog(colo.cyan.bold("colo colo"));
+colog(colo.green.underline("colo colo"));
+colog(colo.magenta.italic("colo colo"));
+colog(colo.grey.inverse("colo colo"));

@@ -1,4 +1,4 @@
-var colo = require("..");
+var colo = require("../colo");
 var assert = require("assert");
 
 describe('colo', function(){

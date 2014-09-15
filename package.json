@@ -2,7 +2,7 @@
   "name": "colo",
   "version": "0.1.0",
   "description": "colorize string",
-  "main": "index.js",
+  "main": "colo.js",
   "scripts": {
     "test": "mocha"
   },
