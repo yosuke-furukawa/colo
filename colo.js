@@ -27,12 +27,16 @@
   } else {
     // browser
     isBrowser = true;
-    var colog = function(message) {
-      if (message.msg && message.styles) {
-        console.log("%c" + message.msg, message.styles);
+    var colog = function() {
+      var args = [].slice.call(arguments);
+      var message = args.shift();
+      if (message && message.msg && message.styles) {
+        args.unshift(message.styles);
+        args.unshift("%c" + message.msg);
       } else {
-        console.log(message);
+        args.unshift(message);
       }
+      console.log.apply(console, args);
     };
     root.colo = colo;
     root.colog = colog;
