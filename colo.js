@@ -20,7 +20,7 @@
   var colo = {};
   var isBrowser = false;
 
-  if (typeof module !== 'undefined' && module.exports) {
+  if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
     // node.js
     module.exports = colo;
     module.exports.colog = console.log;
@@ -38,8 +38,23 @@
       }
       console.log.apply(console, args);
     };
-    root.colo = colo;
-    root.colog = colog;
+    if (typeof define === 'undefined' && define.amd) {
+      // amd
+      define(function() {
+        return {
+          colo: colo,
+          colog: colog
+        };
+      });
+    } else if (typeof module !== 'undefined' && module.exports) {
+      // commonjs like browserify
+      module.exports = colo;
+      module.exports.colog = console.log;
+    } else {
+      // umd
+      root.colo = colo;
+      root.colog = colog;
+    }
   }
 
   var deco = function(_styles) {
