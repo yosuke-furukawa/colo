@@ -38,7 +38,7 @@
       }
       console.log.apply(console, args);
     };
-    if (typeof define === 'undefined' && define.amd) {
+    if (typeof define !== 'undefined' && define.amd) {
       // amd
       define(function() {
         return {
