@@ -20,7 +20,7 @@
   var colo = {};
   var isBrowser = false;
 
-  if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
+  if (typeof module !== 'undefined' && module.exports && typeof global === 'object') {
     // node.js
     module.exports = colo;
     module.exports.colog = console.log;
