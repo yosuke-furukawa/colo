@@ -1,6 +1,6 @@
 {
   "name": "colo",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "colorize string",
   "main": "colo.js",
   "scripts": {
