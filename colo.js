@@ -74,7 +74,7 @@
       if (color) {
         if (isBrowser) {
           styles += color[2] + "; ";
-        } else {
+        } else if (!isEnvNoColor()) {
           result = '\u001b[' + color[0] + 'm' + result + '\u001b[' + color[1] + 'm';
         }
       }
@@ -84,6 +84,14 @@
     } else {
       return result;
     }
+  };
+
+  /**
+   * Checks if the NO_COLOR env var is set.
+   * @return {boolean}
+   */
+  var isEnvNoColor = function() {
+    return typeof process === "object" && process.env && !!process.env.NO_COLOR;
   };
 
   var styles = (function () {

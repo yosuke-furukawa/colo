@@ -33,4 +33,21 @@ describe('colo', function(){
       assert.equal(colo.cyan(undefined), "\u001b[36mundefined\u001b[39m");
     });
   });
+
+  context("when NO_COLOR env var is set", function(){
+    before(function(){
+      process.env.NO_COLOR = "true";
+    });
+
+    after(function(){
+      process.env.NO_COLOR = undefined;
+    });
+
+    it("should not decorate the input", function(){
+      assert.equal(colo.bold("foo"), "foo");
+      assert.equal(colo.italic("foo"), "foo");
+      assert.equal(colo.red("foo"), "foo");
+      assert.equal(colo.cyan("foo"), "foo");
+    });
+  });
 });
