@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/yosuke-furukawa/colo",
   "devDependencies": {
-    "mocha": "^1.21.4"
+    "mocha": "1.21.5"
   }
 }
